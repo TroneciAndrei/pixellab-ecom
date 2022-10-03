@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { Header } from "../components/common";
+import { Header, Footer } from "../components/common";
 
 const black = "#171717";
 const white = "#fff";
@@ -28,6 +28,14 @@ export const Layout = ({ children }) => {
     color: ${white};
     grid-area: header;
     padding: 0 16px;
+
+    @media (min-width: 1024px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 100vh;
+    }
   `;
 
   const mainAreaCss = css`
@@ -36,7 +44,6 @@ export const Layout = ({ children }) => {
 
   const footerCss = css`
     background-color: ${gray};
-    padding: 0 16px;
   `;
 
   return (
@@ -47,7 +54,9 @@ export const Layout = ({ children }) => {
 
       <div className={mainAreaCss}>
         {children}
-        <footer className={footerCss}>x</footer>
+        <footer className={footerCss}>
+          <Footer></Footer>
+        </footer>
       </div>
     </div>
   );

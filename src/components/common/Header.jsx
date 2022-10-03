@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <>
-      <section className="relative flex justify-between items-center h-full z-10">
+      <section className="relative  flex justify-between lg:flex-col items-center h-full z-10 lg:py-4 ">
         <Link href="">
           <a title="Home">
             <FaApple size="32"></FaApple>
@@ -30,12 +30,16 @@ export const Header = () => {
             <CgMenu size="32"></CgMenu>
           )}
         </button>
+
+        <div className="hidden lg:block">
+          <span className="block w-4 h-4 bg-white rounded-full"></span>
+        </div>
       </section>
 
       <nav
-        className={`absolute left-0 ${
-          menuOpen ? "top-0" : "-top-full"
-        }  h-screen w-screen text-white bg-neutral-900 `}
+        className={`absolute left-0 -top-full  transition-transform transform-gpu ${
+          menuOpen ? "translate-y-full" : ""
+        }  h-screen w-screen  lg:w-screen-1/3 text-white bg-neutral-900 `}
       >
         <ul className="flex justify-center items-center flex-col h-full text-3xl gap-6 uppercase font-bold">
           <li>
