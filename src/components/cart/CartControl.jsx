@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CgShoppingBag } from "react-icons/cg";
+
 export const CartControl = () => {
   return (
     <ul className="border border-zinc-400 border-l-0">
@@ -9,7 +11,7 @@ export const CartControl = () => {
             title="Cart"
             className="w-24 h-24 flex justify-center items-center"
           >
-            1
+            <CgShoppingBag size={25} />
           </a>
         </Link>
       </li>

@@ -1,8 +1,15 @@
 import { css } from "@emotion/css";
 
+import { ImSad } from "react-icons/im";
+
 export const ProductGrid = ({ products = [] }) => {
   if (products.length <= 0) {
-    return <>There are no products</>;
+    return (
+      <div className="flex justify-center items-center flex-col gap-3 mb-4">
+        <ImSad size={100} />
+        <p className="text-2xl font-bold">There is no products found</p>
+      </div>
+    );
   }
 
   const gridCss = css`

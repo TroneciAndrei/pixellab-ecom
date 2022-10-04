@@ -3,7 +3,12 @@ import { useState } from "react";
 
 import { CgMenu } from "react-icons/cg";
 import { FaApple } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterSquare,
+} from "react-icons/ai";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,8 +36,24 @@ export const Header = () => {
           )}
         </button>
 
-        <div className="hidden lg:block">
-          <span className="block w-4 h-4 bg-white rounded-full"></span>
+        <div className="hidden lg:flex justify-center items-center flex-col gap-4">
+          <Link href="facebook.com">
+            <a title="Facebook">
+              <AiFillFacebook size={25} />
+            </a>
+          </Link>
+
+          <Link href="instagram.com">
+            <a title="Instagram">
+              <AiFillInstagram size={25} />
+            </a>
+          </Link>
+
+          <Link href="twitter.com">
+            <a title="Twitter">
+              <AiFillTwitterSquare size={25} />
+            </a>
+          </Link>
         </div>
       </section>
 

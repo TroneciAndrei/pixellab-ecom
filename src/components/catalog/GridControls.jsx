@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+import {
+  BsFillGrid1X2Fill,
+  BsFillGridFill,
+  BsFillGrid3X3GapFill,
+} from "react-icons/bs";
+
 const buttonClasses = `
     w-24 h-24  border-l border-zinc-400 flex justify-center items-center
 `;
@@ -19,7 +25,7 @@ export const GridControls = () => {
             setItemsPerRow("1/row");
           }}
         >
-          1
+          <BsFillGrid1X2Fill size={25} />
         </button>
       </li>
 
@@ -33,7 +39,7 @@ export const GridControls = () => {
             setItemsPerRow("2/row");
           }}
         >
-          2
+          <BsFillGridFill size={25} />
         </button>
       </li>
 
@@ -47,7 +53,7 @@ export const GridControls = () => {
             setItemsPerRow("4/row");
           }}
         >
-          4
+          <BsFillGrid3X3GapFill size={25} />
         </button>
       </li>
     </ul>

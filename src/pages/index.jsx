@@ -17,7 +17,7 @@ const Home = () => {
           <CartControl></CartControl>
         </header>
 
-        <section className="mt-16">
+        <section className="mt-16 mb-16">
           <ProductGrid
             products={Array(12).fill({
               name: "Prod",
