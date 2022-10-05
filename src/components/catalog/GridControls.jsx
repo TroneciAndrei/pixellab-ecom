@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   BsFillGrid1X2Fill,
@@ -7,11 +7,18 @@ import {
 } from "react-icons/bs";
 
 const buttonClasses = `
-    w-24 h-24  border-l border-zinc-400 flex justify-center items-center
+    w-24 h-24  border-l border-zinc-400 border-r-0 flex justify-center items-center
 `;
 
-export const GridControls = () => {
+export const GridControls = ({ setPerRow = () => {} }) => {
   const [itemsPerRow, setItemsPerRow] = useState("1/row");
+
+  // de fiecare data cand itemsPerRow se schimba ruleaza acest callback
+  useEffect(() => {
+    const perRow = parseInt(itemsPerRow);
+
+    setPerRow(perRow);
+  }, [itemsPerRow]);
 
   return (
     <ul className="flex border border-l-0 border-zinc-400 ">

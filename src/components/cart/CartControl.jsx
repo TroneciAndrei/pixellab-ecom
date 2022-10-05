@@ -4,7 +4,7 @@ import { CgShoppingBag } from "react-icons/cg";
 
 export const CartControl = () => {
   return (
-    <ul className="border border-zinc-400 border-l-0">
+    <ul className="border border-zinc-400">
       <li>
         <Link href="/cart">
           <a
