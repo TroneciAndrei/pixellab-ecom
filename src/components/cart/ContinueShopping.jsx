@@ -8,7 +8,7 @@ export const ContinueShopping = () => {
       <div className="cursor-pointer flex items-center justify-center gap-7 border border-zinc-400 px-8">
         <BsArrowLeft size={30} />
         <a className="uppercase font-bold" title="Back to Shopping">
-          Back to Shopping
+          Back to Shop
         </a>
       </div>
     </Link>
