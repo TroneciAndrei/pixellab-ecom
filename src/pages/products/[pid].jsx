@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 import { CartControl, ContinueShopping } from "../../components/cart";
+import ProductReviews from "./ProductReviews";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const ProductPage = () => {
     return <></>;
   }
 
-  const { id, title, description, price, image } = product;
+  const { id, title, description, price, image, rating } = product;
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     currency: "USD",
@@ -57,6 +58,7 @@ const ProductPage = () => {
 
           <header className="col-start-7 col-span-6 pt-12">
             <h1 className="text-2xl uppercase font-medium">{title}</h1>
+            <ProductReviews rate={rating.rate} count={rating.count} />
             <p className="mt-12 ">{description}</p>
 
             <div className="mt-12">

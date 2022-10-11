@@ -38,7 +38,7 @@ export const ProductGrid = ({ products = [], perRow = 4 }) => {
             <article className="w-full">
               <header>
                 <div className="w-full h-72 text-center ">
-                  <Link href={`/products/${id}`}>
+                  <Link href={`/products/2`}>
                     <a title={title}>
                       <img
                         alt={`Image for product ${title}`}
