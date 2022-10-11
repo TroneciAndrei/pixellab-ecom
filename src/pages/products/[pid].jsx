@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
-import Image from "next/image";
+import { RelatedProducts } from "./RelatedProducts";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const ProductPage = () => {
     return <></>;
   }
 
-  const { id, title, description, price, image, rating } = product;
+  const { id, title, description, price, image, rating, category } = product;
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     currency: "USD",
@@ -83,7 +83,14 @@ const ProductPage = () => {
           </header>
         </section>
         <section className="border-t"></section>
-        <section className="container px-4 mx-auto lg:px-0">jos</section>
+        <section className="container px-4 mx-auto lg:px-0">
+          <RelatedProducts
+            image={image}
+            price={price}
+            title={title}
+            acategory={category}
+          />
+        </section>
       </main>
     </>
   );
