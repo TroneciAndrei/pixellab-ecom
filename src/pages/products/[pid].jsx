@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
+import Image from "next/image";
 
 const ProductPage = () => {
   const router = useRouter();

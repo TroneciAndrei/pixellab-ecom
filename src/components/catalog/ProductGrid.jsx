@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ImSad } from "react-icons/im";
@@ -40,11 +41,19 @@ export const ProductGrid = ({ products = [], perRow = 4 }) => {
                 <div className="w-full h-72 text-center ">
                   <Link href={`/products/2`}>
                     <a title={title}>
-                      <img
+                      {/* <img
                         alt={`Image for product ${title}`}
                         src={image}
                         className="h-full inline"
-                      ></img>
+                      ></img> */}
+
+                      <Image
+                        src={image}
+                        height={200}
+                        width={200}
+                        objectFit="contain"
+                        alt={`Image for product ${title}`}
+                      />
                     </a>
                   </Link>
                 </div>
