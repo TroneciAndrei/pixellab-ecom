@@ -2,38 +2,54 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 
-export const RelatedProducts = ({ image, price, title, acategory }) => {
-  console.log(image, price, title);
-  const [product, setProduct] = useState(null);
+export const RelatedProducts = ({ productCategory, productId }) => {
+  const [products, setProducts] = useState(null);
   useEffect(() => {
-    fetch(`${baseUrl}/products/categories?limit=4`)
+    fetch(`${baseUrl}/products/category/${productCategory}?limit=4`)
       .then((response) => {
         return response.json();
       })
       .then((result) => {
-        setProduct(result);
+        setProducts(result);
       });
   }, []);
 
-  if (product === null) {
+  if (products === null) {
     return <></>;
   }
 
   return (
-    <div>
+    <div className="text-center">
       <h1>Related Products</h1>
-      {product
-        .filter((category) => category !== acategory)
-        .map((_) => (
-          <div className="flex justify-center items-center gap-12 flex-col text-center">
-            <Image src={image} width={200} height={200} objectFit="contain" />
+      <div className="flex justify-center items-center gap-5 mt-16">
+        {products.map((product) => {
+          const { id, title, price, category, image } = product;
+          const formattedPrice = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(price);
 
-            <div>
-              <h1>{title}</h1>
-              <span>{price}</span>
-            </div>
-          </div>
-        ))}
+          if (category === productCategory && id !== productId) {
+            return (
+              <div
+                className="flex justify-center items-center text-center"
+                key={id}
+              >
+                <div className="">
+                  <Image
+                    src={image}
+                    width={200}
+                    height={200}
+                    objectFit="contain"
+                  />
+                  <h1>{title}</h1>
+                  <span>{formattedPrice}</span>
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
     </div>
   );
 };

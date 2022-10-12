@@ -4,6 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["fakestoreapi.com"],
+    allowFutureImage: true,
+    layoutRaw: true,
   },
 };
 

@@ -6,11 +6,13 @@ import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
 import { RelatedProducts } from "./RelatedProducts";
 
+import { BiLoaderCircle } from "react-icons/bi";
+import { useCart } from "../../hooks";
+
 const ProductPage = () => {
   const router = useRouter();
   const { pid } = router.query;
   const [product, setProduct] = useState(null);
-
   useEffect(() => {
     if (pid === undefined) {
       return;
@@ -25,8 +27,18 @@ const ProductPage = () => {
       });
   }, [pid]);
 
-  if (product === null) {
+  const cart = useCart(2);
+
+  if (cart === null) {
     return <></>;
+  }
+
+  if (product === null) {
+    return (
+      <div className="flex h-screen w-screen justify-center items-center">
+        <BiLoaderCircle size={48} className="animate-spin" />
+      </div>
+    );
   }
 
   const { id, title, description, price, image, rating, category } = product;
@@ -45,10 +57,10 @@ const ProductPage = () => {
       <main>
         <header className="container px-4 mx-auto lg:px-0 flex justify-between">
           <ContinueShopping />
-          <CartControl />
+          <CartControl cart={cart} />
         </header>
 
-        <section className="container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
+        <section className="mt-16 container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
           <div className="col-start-1 col-span-5">
             <img
               src={image}
@@ -84,12 +96,7 @@ const ProductPage = () => {
         </section>
         <section className="border-t"></section>
         <section className="container px-4 mx-auto lg:px-0">
-          <RelatedProducts
-            image={image}
-            price={price}
-            title={title}
-            acategory={category}
-          />
+          <RelatedProducts productCategory={category} productId={id} />
         </section>
       </main>
     </>

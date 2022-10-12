@@ -58,7 +58,7 @@ export const Header = () => {
       </section>
 
       <nav
-        className={`absolute left-0 -top-full  transition-transform transform-gpu ${
+        className={`absolute left-0 -top-full   transition-transform transform-gpu ${
           menuOpen ? "translate-y-full" : ""
         }  h-screen w-screen  lg:w-screen-1/3 text-white bg-neutral-900 `}
       >
