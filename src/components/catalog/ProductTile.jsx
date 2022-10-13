@@ -23,8 +23,9 @@ export const ProductTile = ({ product }) => {
               <span className="relative">
                 <Image
                   src={image}
-                  width={200}
-                  height={200}
+                  width={300}
+                  height={300}
+                  objectFit="contain"
                   alt={`Image for product ${title}`}
                 />
               </span>
