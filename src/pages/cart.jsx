@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import { CartControl, ContinueShopping } from "../components/cart";
+import { RelatedProducts } from "../components/catalog";
 // import { useCart } from "../hooks";
 
 const Cart = () => {
@@ -21,7 +22,9 @@ const Cart = () => {
           <ContinueShopping />
           <CartControl></CartControl>
         </header>
-        <section className="mt-16"></section>
+        <section className="mt-16">
+          <RelatedProducts productCategory={category} productId={id} />
+        </section>
       </main>
     </>
   );

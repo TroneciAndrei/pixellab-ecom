@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 
-const RelatedProducts = ({ productCategory, productId }) => {
+export const RelatedProducts = ({ productCategory, productId }) => {
   const [products, setProducts] = useState(null);
   useEffect(() => {
     fetch(`${baseUrl}/products/category/${productCategory}?limit=4`)
@@ -53,5 +53,3 @@ const RelatedProducts = ({ productCategory, productId }) => {
     </div>
   );
 };
-
-export default RelatedProducts;

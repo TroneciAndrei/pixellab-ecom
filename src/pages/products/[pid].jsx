@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
-import { RelatedProducts } from "./RelatedProducts";
 
 import { BiLoaderCircle } from "react-icons/bi";
 // import { useCart } from "../../hooks";
@@ -95,9 +94,7 @@ const ProductPage = () => {
           </header>
         </section>
         <section className="border-t"></section>
-        <section className="container px-4 mx-auto lg:px-0">
-          <RelatedProducts productCategory={category} productId={id} />
-        </section>
+        <section className="container px-4 mx-auto lg:px-0"></section>
       </main>
     </>
   );
