@@ -6,6 +6,7 @@ import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
 
 import { BiLoaderCircle } from "react-icons/bi";
+import { RelatedProducts } from "../../components/catalog";
 // import { useCart } from "../../hooks";
 
 const ProductPage = () => {
@@ -94,7 +95,9 @@ const ProductPage = () => {
           </header>
         </section>
         <section className="border-t"></section>
-        <section className="container px-4 mx-auto lg:px-0"></section>
+        <section className="container px-4 mx-auto lg:px-0">
+          <RelatedProducts productCategory={category} productId={id} />
+        </section>
       </main>
     </>
   );

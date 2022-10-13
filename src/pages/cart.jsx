@@ -22,9 +22,7 @@ const Cart = () => {
           <ContinueShopping />
           <CartControl></CartControl>
         </header>
-        <section className="mt-16">
-          <RelatedProducts productCategory={category} productId={id} />
-        </section>
+        <section className="mt-16"></section>
       </main>
     </>
   );
