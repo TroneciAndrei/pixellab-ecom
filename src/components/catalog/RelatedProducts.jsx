@@ -19,8 +19,8 @@ export const RelatedProducts = ({ productCategory, productId }) => {
   }
 
   return (
-    <div className="text-center">
-      <h1>Related Products</h1>
+    <div className="text-center mt-12">
+      <h1 className="text-2xl font-bold">Related Products</h1>
       <div className="flex justify-center items-center gap-5 mt-16">
         {products.map((product) => {
           const { id, title, price, category, image } = product;
@@ -35,15 +35,18 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                 className="flex justify-center items-center text-center"
                 key={id}
               >
-                <div className="">
+                <div className="mb-12">
                   <Image
                     src={image}
-                    width={200}
+                    width={500}
                     height={200}
                     objectFit="contain"
+                    className="inline"
                   />
-                  <h1>{title}</h1>
-                  <span>{formattedPrice}</span>
+                  <h1 className="text-zinc-400 uppercase text-base w-5/6 m-auto">
+                    {title}
+                  </h1>
+                  <span className="font-bold text-2xl">{formattedPrice}</span>
                 </div>
               </div>
             );
