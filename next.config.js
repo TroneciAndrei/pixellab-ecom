@@ -5,12 +5,6 @@ const nextConfig = {
   images: {
     domains: ["fakestoreapi.com"],
   },
-  experimental: {
-    images: {
-      layoutRaw: true,
-      allowFutureImage: true,
-    },
-  },
 };
 
 module.exports = nextConfig;

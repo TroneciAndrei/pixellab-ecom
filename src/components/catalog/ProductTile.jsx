@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 
 export const ProductTile = ({ product }) => {
@@ -8,13 +8,6 @@ export const ProductTile = ({ product }) => {
     style: "currency",
     currency: "USD",
   }).format(price);
-
-  const css = {
-    height: "300px",
-    width: "200px",
-    display: "inline",
-    textAlign: "center",
-  };
 
   return (
     <article className="w-full">
@@ -32,8 +25,6 @@ export const ProductTile = ({ product }) => {
                   src={image}
                   width={200}
                   height={200}
-                  style={css}
-                  sizes="100vw"
                   alt={`Image for product ${title}`}
                 />
               </span>
