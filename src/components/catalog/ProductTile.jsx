@@ -26,6 +26,7 @@ export const ProductTile = ({ product }) => {
                   width={500}
                   height={300}
                   objectFit="contain"
+                  className="z-[-1]"
                   alt={`Image for product ${title}`}
                 />
               </span>
