@@ -20,16 +20,15 @@ export const ProductTile = ({ product }) => {
               src={image}
               className="h-full inline"
             ></img> */}
-              <span className="relative">
+              <div className="relative z-[-1]">
                 <Image
                   src={image}
                   width={500}
                   height={300}
                   objectFit="contain"
-                  className="z-[-1]"
                   alt={`Image for product ${title}`}
                 />
-              </span>
+              </div>
             </a>
           </Link>
         </div>

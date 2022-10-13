@@ -35,13 +35,13 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                 className="flex justify-center items-center text-center"
                 key={id}
               >
-                <div className="mb-12">
+                <div className="mb-12 relative z-[-1]">
                   <Image
                     src={image}
                     width={500}
                     height={200}
                     objectFit="contain"
-                    className="inline z-[-1]"
+                    className="inline"
                   />
                   <h1 className="text-zinc-400 uppercase text-base w-5/6 m-auto">
                     {title}
