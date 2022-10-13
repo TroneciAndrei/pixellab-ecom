@@ -7,7 +7,7 @@ import ProductReviews from "./ProductReviews";
 import { RelatedProducts } from "./RelatedProducts";
 
 import { BiLoaderCircle } from "react-icons/bi";
-import { useCart } from "../../hooks";
+// import { useCart } from "../../hooks";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -27,7 +27,7 @@ const ProductPage = () => {
       });
   }, [pid]);
 
-  const cart = useCart(2);
+  // const cart = useCart(2);
 
   if (cart === null) {
     return <></>;
@@ -57,7 +57,7 @@ const ProductPage = () => {
       <main>
         <header className="container px-4 mx-auto lg:px-0 flex justify-between">
           <ContinueShopping />
-          <CartControl cart={cart} />
+          <CartControl />
         </header>
 
         <section className="mt-16 container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
