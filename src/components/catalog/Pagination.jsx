@@ -22,7 +22,6 @@ export const Paginations = ({ products, setPaginatedProducts }) => {
     }
 
     const newProducts = [...products].splice(perPage * (page - 1), perPage);
-    const work = 1;
 
     setPaginatedProducts(newProducts);
   }, [pagination]);
