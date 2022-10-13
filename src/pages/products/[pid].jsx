@@ -28,9 +28,9 @@ const ProductPage = () => {
 
   // const cart = useCart(2);
 
-  if (cart === null) {
-    return <></>;
-  }
+  // if (cart === null) {
+  //   return <></>;
+  // }
 
   if (product === null) {
     return (
