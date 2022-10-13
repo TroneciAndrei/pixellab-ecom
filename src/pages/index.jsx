@@ -28,7 +28,7 @@ const Home = () => {
           <CartControl cart={cart}></CartControl>
         </header>
 
-        <section className="mt-16 mb-16">
+        <section className="mt-16 mb-16 relative ">
           <ProductGrid
             products={paginatedProducts}
             perRow={perRow}

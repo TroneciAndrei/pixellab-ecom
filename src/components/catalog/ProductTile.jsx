@@ -9,35 +9,40 @@ export const ProductTile = ({ product }) => {
     currency: "USD",
   }).format(price);
 
+  const css = {
+    height: "300px",
+    width: "200px",
+    display: "inline",
+    textAlign: "center",
+  };
+
   return (
     <article className="w-full">
       <header>
         <div className="w-full text-center relative">
           <Link href={`/products/${id}`}>
-            <div className="relative">
-              <a title={title} className="cursor-pointer">
-                {/* <img
+            <a title={title} className="cursor-pointer">
+              {/* <img
               alt={`Image for product ${title}`}
               src={image}
               className="h-full inline"
             ></img> */}
-
+              <span className="relative">
                 <Image
                   src={image}
-                  height={300}
                   width={200}
-                  objectFit="contain"
+                  height={200}
+                  style={css}
+                  sizes="100vw"
                   alt={`Image for product ${title}`}
-                  className="inline"
-                  layout={"raw"}
                 />
-              </a>
-            </div>
+              </span>
+            </a>
           </Link>
         </div>
       </header>
 
-      <section className="mt-8 text-center text-sm">
+      <section className="mt-8 text-center text-sm relative z-[-1]">
         <h1 className="uppercase text-zinc-400 md-2">{title}</h1>
 
         <div className="text-zinc-900 font-light">{formattedPrice}</div>

@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <>
-      <section className="relative  flex justify-between lg:flex-col items-center h-full z-10 lg:py-4 ">
+      <section className="relative   flex justify-between lg:flex-col items-center h-full z-10 lg:py-4 ">
         <Link href="/">
           <a title="Home">
             <FaApple size="32"></FaApple>
