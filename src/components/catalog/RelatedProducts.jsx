@@ -41,7 +41,6 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                     width={500}
                     height={200}
                     objectFit="contain"
-                    className="inline"
                   />
                   <h1 className="text-zinc-400 uppercase text-base w-5/6 m-auto">
                     {title}
