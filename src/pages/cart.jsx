@@ -1,15 +1,16 @@
 import Head from "next/head";
 
-import { CartControl, ContinueShopping } from "../components/cart";
-import { RelatedProducts } from "../components/catalog";
-// import { useCart } from "../hooks";
+import {
+  CartControl,
+  CartItems,
+  CartTotals,
+  CartVoucher,
+  ContinueShopping,
+} from "../components/cart";
+import { useCart } from "../hooks";
 
 const Cart = () => {
-  // const cart = useCart(2);
-
-  // if (cart === null) {
-  //   return <></>;
-  // }
+  const cart = useCart(2);
 
   return (
     <>
@@ -20,9 +21,18 @@ const Cart = () => {
       <main className="container px-4 lg:px-0 mx-auto">
         <header className="flex justify-between text-zinc-400">
           <ContinueShopping />
-          <CartControl></CartControl>
+          <CartControl cart={cart}></CartControl>
         </header>
-        <section className="mt-16"></section>
+        <section className="mt-16 grid grid-cols-12 gap-8">
+          <div className="col-span-8">
+            <CartItems />
+            <CartVoucher />
+          </div>
+
+          <aside className="col-span-4">
+            <CartTotals />
+          </aside>
+        </section>
       </main>
     </>
   );

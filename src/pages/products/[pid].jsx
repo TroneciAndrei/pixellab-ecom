@@ -1,44 +1,26 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { baseUrl } from "../..";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
-
 import { BiLoaderCircle } from "react-icons/bi";
 import { RelatedProducts } from "../../components/catalog";
-// import { useCart } from "../../hooks";
+import { useProduct } from "../../hooks";
 
 const ProductPage = () => {
   const router = useRouter();
   const { pid } = router.query;
-  const [product, setProduct] = useState(null);
-  useEffect(() => {
-    if (pid === undefined) {
-      return;
-    }
+  const { product, status } = useProduct(pid);
 
-    fetch(`${baseUrl}/products/${pid}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        setProduct(result);
-      });
-  }, [pid]);
-
-  // const cart = useCart(2);
-
-  // if (cart === null) {
-  //   return <></>;
-  // }
-
-  if (product === null) {
+  if (product === null && status !== "404") {
     return (
       <div className="flex h-screen w-screen justify-center items-center">
         <BiLoaderCircle size={48} className="animate-spin" />
       </div>
     );
+  }
+
+  if (status === "404") {
+    return <span>Product not found</span>;
   }
 
   const { id, title, description, price, image, rating, category } = product;
