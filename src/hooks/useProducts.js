@@ -12,7 +12,7 @@ export const useProducts = (limit = 20) => {
       .then((result) => {
         setProducts(result);
       });
-  }, [setProducts]);
+  }, [setProducts, limit]);
 
   return [products];
 };
