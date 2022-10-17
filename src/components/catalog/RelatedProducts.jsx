@@ -12,7 +12,7 @@ export const RelatedProducts = ({ productCategory, productId }) => {
       .then((result) => {
         setProducts(result);
       });
-  }, []);
+  }, [productCategory]);
 
   if (products === null) {
     return <></>;
