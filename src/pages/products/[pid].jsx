@@ -5,6 +5,7 @@ import ProductReviews from "./ProductReviews";
 import { BiLoaderCircle } from "react-icons/bi";
 import { RelatedProducts } from "../../components/catalog";
 import { useProduct } from "../../hooks";
+import Image from "next/image";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -44,11 +45,19 @@ const ProductPage = () => {
 
         <section className="mt-16 container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
           <div className="col-start-1 col-span-5">
-            <img
+            {/* <img
               src={image}
               alt={`Image of ${title}`}
               className="block w-full"
-            />
+            /> */}
+
+            <Image
+              src={image}
+              alt={`Image of ${title}`}
+              width={600}
+              height={600}
+              objectFit="contain"
+            ></Image>
           </div>
 
           <header className="col-start-7 col-span-6 pt-12">
