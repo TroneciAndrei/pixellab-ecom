@@ -21,10 +21,15 @@ const ProductPage = () => {
   }
 
   if (status === "404") {
-    return <span>Product not found</span>;
+    return (
+      <span className="flex justify-center items-center h-screen text-3xl">
+        404 | Product not found
+      </span>
+    );
   }
 
   const { id, title, description, price, image, rating, category } = product;
+  console.log(rating);
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     currency: "USD",
@@ -45,12 +50,6 @@ const ProductPage = () => {
 
         <section className="mt-16 container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
           <div className="col-start-1 col-span-5">
-            {/* <img
-              src={image}
-              alt={`Image of ${title}`}
-              className="block w-full"
-            /> */}
-
             <Image
               src={image}
               alt={`Image of ${title}`}

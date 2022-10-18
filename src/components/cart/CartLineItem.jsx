@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useProduct } from "../../hooks";
+import ProductReviews from "../../pages/products/ProductReviews";
 
 export const CartLineItem = ({ product }) => {
   const { quantity, productId } = product;
@@ -11,15 +12,15 @@ export const CartLineItem = ({ product }) => {
     return <></>;
   }
 
-  const { image, price, id, title } = cartItem;
+  const { image, price, id, title, rating } = cartItem;
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   }).format(price * quantity);
 
   return (
-    <tr>
-      <td>
+    <tr className="flex justify-between  items-center w-full border p-2">
+      <td className="flex gap-5 items-center ">
         <Link href={`/products/${id}`}>
           <a title={title}>
             <Image
@@ -27,17 +28,22 @@ export const CartLineItem = ({ product }) => {
               width={100}
               height={100}
               objectFit="contain"
+              alt={`Image for product ${title}`}
             ></Image>
           </a>
         </Link>
-
-        <Link href={`/products/${id}`}>
-          <a title={title}>{title}</a>
-        </Link>
+        <div className="flex flex-col justify-center w-72">
+          <Link href={`/products/${id}`}>
+            <a className="w-3/4" title={title}>
+              {title}
+            </a>
+          </Link>
+          <ProductReviews rate={rating.rate} count={rating.count} />
+        </div>
       </td>
-      <td></td>
-      <td>{quantity}</td>
-      <td>{formattedPrice}</td>
+      <td className="grow ">${price}</td>
+      <td className="grow ">{quantity}</td>
+      <td className="grow text-center">{formattedPrice}</td>
     </tr>
   );
 };
