@@ -29,7 +29,6 @@ const ProductPage = () => {
   }
 
   const { id, title, description, price, image, rating, category } = product;
-  console.log(rating);
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     currency: "USD",
@@ -49,7 +48,7 @@ const ProductPage = () => {
         </header>
 
         <section className="mt-16 container px-4 mx-auto lg:px-0 grid gap-8 grid-cols-12">
-          <div className="col-start-1 col-span-5">
+          <div className="col-start-1 col-span-5 relative z-[-1]">
             <Image
               src={image}
               alt={`Image of ${title}`}

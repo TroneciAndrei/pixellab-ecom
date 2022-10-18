@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../..";
 
@@ -35,17 +36,26 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                 className="flex justify-center items-center text-center"
                 key={id}
               >
-                <div className="mb-12 relative z-[-1]">
-                  <Image
-                    src={image}
-                    width={500}
-                    height={200}
-                    objectFit="contain"
-                    alt={`Image for product ${title}`}
-                  />
-                  <h1 className="text-zinc-400 uppercase text-base w-5/6 m-auto">
-                    {title}
-                  </h1>
+                <div className="mb-12 ">
+                  <Link href={`/products/${id}`}>
+                    <a className="cursor-pointer relative z-[-1]">
+                      <Image
+                        src={image}
+                        width={500}
+                        height={200}
+                        objectFit="contain"
+                        alt={`Image for product ${title}`}
+                      />
+                    </a>
+                  </Link>
+
+                  <Link href={`/products/${id}`}>
+                    <a className="cursor-pointer">
+                      <h1 className="text-zinc-400 uppercase text-base w-5/6 m-auto">
+                        {title}
+                      </h1>
+                    </a>
+                  </Link>
                   <span className="font-bold text-2xl">{formattedPrice}</span>
                 </div>
               </div>
