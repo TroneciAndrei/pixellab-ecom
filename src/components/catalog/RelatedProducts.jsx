@@ -36,18 +36,22 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                 className="flex justify-center items-center text-center"
                 key={id}
               >
-                <div className="mb-12 ">
-                  <Link href={`/products/${id}`}>
-                    <a className="cursor-pointer relative z-[-1]">
-                      <Image
-                        src={image}
-                        width={500}
-                        height={200}
-                        objectFit="contain"
-                        alt={`Image for product ${title}`}
-                      />
-                    </a>
-                  </Link>
+                <div className="mb-12">
+                  <div className="relative">
+                    <Link href={`/products/${id}`}>
+                      <a className="cursor-pointer">
+                        <div className="relative z-[-1]">
+                          <Image
+                            src={image}
+                            width={500}
+                            height={200}
+                            objectFit="contain"
+                            alt={`Image for product ${title}`}
+                          />
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
 
                   <Link href={`/products/${id}`}>
                     <a className="cursor-pointer">
