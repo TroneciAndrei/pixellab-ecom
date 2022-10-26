@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AddToCart } from "./AddToCart";
 
 export const ProductTile = ({ product }) => {
   const { title, price, image, id } = product;
@@ -12,14 +13,9 @@ export const ProductTile = ({ product }) => {
   return (
     <article className="w-full">
       <header>
-        <div className="w-full text-center relative">
+        <div className="w-full text-center">
           <Link href={`/products/${id}`}>
             <a title={title} className="cursor-pointer">
-              {/* <img
-              alt={`Image for product ${title}`}
-              src={image}
-              className="h-full inline"
-            ></img> */}
               <div className="relative z-[-1]">
                 <Image
                   src={image}
@@ -34,10 +30,12 @@ export const ProductTile = ({ product }) => {
         </div>
       </header>
 
-      <section className="mt-8 text-center text-sm relative z-[-1]">
+      <section className="mt-8 text-center text-sm">
         <h1 className="uppercase text-zinc-400 md-2">{title}</h1>
 
         <div className="text-zinc-900 font-light">{formattedPrice}</div>
+
+        <AddToCart product={product}></AddToCart>
       </section>
     </article>
   );

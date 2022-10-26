@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
 import { BiLoaderCircle } from "react-icons/bi";
-import { RelatedProducts } from "../../components/catalog";
+import { AddToCart, RelatedProducts } from "../../components/catalog";
 import { useProduct } from "../../hooks";
 import Image from "next/image";
 
@@ -70,16 +70,7 @@ const ProductPage = () => {
             </div>
 
             <div className="mt-12">
-              <button
-                className="bg-black text-white uppercase text-sm font-medium py-3 px-6 hover:bg-amber-800 transition-colors"
-                title={`Add${title} to cart`}
-                type="button"
-                onClick={() => {
-                  alert(id);
-                }}
-              >
-                Add to Cart
-              </button>
+              <AddToCart product={product} />
             </div>
           </header>
         </section>

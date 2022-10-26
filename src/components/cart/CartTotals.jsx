@@ -45,12 +45,13 @@ export const CartTotals = () => {
           type="submit"
           title="Proceed to Checkout"
           className="flex bg-black w-full  text-white  justify-center py-3 mt-5"
+          onClick={() => {
+            console.log(cart);
+          }}
         >
           Proceed to Checkout
         </button>
       </section>
-
-      <footer></footer>
     </>
   );
 };

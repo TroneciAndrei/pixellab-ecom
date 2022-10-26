@@ -12,8 +12,12 @@ export const useLocalStorage = (keyName, defaultValue = "") => {
   }, [setValue, keyName]);
 
   useEffect(() => {
+    if (value === defaultValue) {
+      return;
+    }
+
     localStorage.setItem(keyName, value);
-  }, [value, keyName]);
+  }, [value, keyName, defaultValue]);
 
   return [value, setValue];
 };
