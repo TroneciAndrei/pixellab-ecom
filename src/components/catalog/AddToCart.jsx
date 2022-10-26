@@ -31,13 +31,15 @@ export const AddToCart = ({ product }) => {
   };
 
   return (
-    <button
-      className="bg-black text-white uppercase text-sm font-medium py-3 px-6 hover:bg-amber-800 transition-colors"
-      title={`Add${title} to cart`}
-      type="button"
-      onClick={onClick}
-    >
-      Add to Cart
-    </button>
+    <div>
+      <button
+        className="bg-black text-white uppercase text-sm font-medium py-3 px-6 hover:bg-amber-800 transition-colors"
+        title={`Add${title} to cart`}
+        type="button"
+        onClick={onClick}
+      >
+        Add to Cart
+      </button>
+    </div>
   );
 };
