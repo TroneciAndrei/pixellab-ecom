@@ -20,6 +20,8 @@ export const CartControl = () => {
     }
   }, [cart]);
 
+  if (cart === undefined) return;
+
   if (cart === null) {
     return <></>;
   }

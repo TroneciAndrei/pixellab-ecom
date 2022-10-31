@@ -10,6 +10,9 @@ export const CartItems = () => {
   }
 
   const { products } = cart;
+  if (products === undefined) {
+    return;
+  }
 
   if (products.length <= 0) {
     return <></>;
@@ -33,6 +36,7 @@ export const CartItems = () => {
               setCart={setCart}
               product={product}
               key={product.productId}
+              cart={cart}
             />
           );
         })}

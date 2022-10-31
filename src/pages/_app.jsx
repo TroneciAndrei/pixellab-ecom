@@ -6,11 +6,11 @@ import { useCart } from "../hooks";
 export const AppContext = createContext();
 
 function MyApp({ Component, pageProps }) {
-  const { cart, setCart, addProduct } = useCart();
+  const { cart, setCart, alterProduct } = useCart();
 
   return (
     <Layout>
-      <AppContext.Provider value={{ cart, setCart, addProduct }}>
+      <AppContext.Provider value={{ cart, setCart, alterProduct }}>
         <Component {...pageProps} />
       </AppContext.Provider>
     </Layout>

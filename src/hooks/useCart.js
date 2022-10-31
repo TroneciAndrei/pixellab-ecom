@@ -1,37 +1,33 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "..";
 
-export const useCart = (cartId = 2) => {
-  const [cart, setCart] = useState(null);
+const alterCart = (cart, productId, quantity) => {
+  const { products } = cart;
 
-  const alterCart = (cart, productId) => {
-    const { products } = cart;
+  const product = products.find((product) => {
+    return product.productId === productId;
+  });
 
-    const product = products.find((product) => {
-      return product.productId === productId;
+  if (product === undefined) {
+    products.push({
+      productId,
+      quantity,
     });
-
-    console.log(product);
-
-    if (product === undefined) {
-      products.push({
-        productId,
-        quantity: 1,
+  } else {
+    if (product.quantity + quantity <= 0) {
+      cart.products = cart.products.filter((product) => {
+        return product.productId !== productId;
       });
     } else {
-      product.quantity += 1;
+      product.quantity += quantity;
     }
+  }
 
-    if (product.productId === productId) {
-      // products.pop({
-      //   productId,
-      //   quantity: 1,
-      // });
-      product.quantity -= 1;
-    }
+  return cart;
+};
 
-    return cart;
-  };
+export const useCart = (cartId = 2) => {
+  const [cart, setCart] = useState(null);
 
   useEffect(() => {
     fetch(`${baseUrl}/carts/${cartId}`)
@@ -43,10 +39,10 @@ export const useCart = (cartId = 2) => {
       });
   }, [setCart, cartId]);
 
-  const addProduct = (productId) => {
-    const newCart = alterCart(cart, productId);
+  const alterProduct = (productId, quantity = 1) => {
+    const newCart = alterCart(cart, productId, quantity);
     setCart({ ...newCart });
   };
 
-  return { cart, setCart, addProduct };
+  return { cart, setCart, alterProduct };
 };

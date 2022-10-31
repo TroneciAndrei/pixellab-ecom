@@ -3,7 +3,7 @@ import { baseUrl } from "../..";
 import { AppContext } from "../../pages/_app";
 
 export const AddToCart = ({ product }) => {
-  const { cart, addProduct } = useContext(AppContext);
+  const { cart, alterProduct } = useContext(AppContext);
   if (cart === null) {
     return;
   }
@@ -12,6 +12,7 @@ export const AddToCart = ({ product }) => {
   const { id: productId, title } = product;
 
   const newCart = {};
+
   const onClick = () => {
     fetch(`${baseUrl}/carts/${cartId}`, {
       method: "PUT",
@@ -24,7 +25,7 @@ export const AddToCart = ({ product }) => {
         return response.json();
       })
       .then((_) => {
-        addProduct(productId);
+        alterProduct(productId);
       });
   };
 

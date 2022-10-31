@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { useCart, useProduct } from "../../hooks";
+import { useProduct } from "../../hooks";
 import ProductReviews from "../../pages/products/ProductReviews";
 import { AppContext } from "../../pages/_app";
-import { RemoveFromCart } from "../catalog";
 
-export const CartLineItem = ({ product }) => {
+export const CartLineItem = ({ product, cart, setCart }) => {
   const { quantity, productId } = product;
   const { product: cartItem } = useProduct(productId);
-  const { cart, setCart } = useContext(AppContext);
+  const { alterProduct, removeProduct } = useContext(AppContext);
 
   const isLoaded = cartItem !== null;
 
@@ -17,19 +16,20 @@ export const CartLineItem = ({ product }) => {
     return <></>;
   }
 
-  const removeItem = (cart, productId) => {
-    const { products } = cart;
-    const newCart = products.filter(
-      (product) => product.productId !== productId
-    );
+  const removeItem = (cart) => {
+    // const { products } = cart;
 
-    setCart(newCart);
-
-    // const product = products.find((product) => {
-    //   return product.productId === productId;
-    // });
-
-    // console.log(product.remove());
+    // const newCart = products
+    //   .map((product) => {
+    //     return product;
+    //   })
+    //   .filter((item) => {
+    //     return item.productId !== cart.id;
+    //   });
+    cart.products = cart.products.filter((product) => {
+      return product.productId !== productId;
+    });
+    setCart(cart.products);
   };
 
   const { image, price, id, title, rating } = cartItem;
@@ -40,15 +40,16 @@ export const CartLineItem = ({ product }) => {
 
   return (
     <tr className="flex justify-between  items-center w-full border p-2">
-      {/* <RemoveFromCart products={products} setCart={setCart}/> */}
-      <button
-        type="button"
-        title="Remove item"
-        onClick={() => removeItem(cart, id)}
-      >
-        X
-      </button>
       <td className="flex gap-5 items-center ">
+        <div>
+          <button
+            type="button"
+            title="Remove item"
+            onClick={() => removeItem(cart)}
+          >
+            X
+          </button>
+        </div>
         <Link href={`/products/${id}`}>
           <a title={title}>
             <Image
@@ -70,7 +71,31 @@ export const CartLineItem = ({ product }) => {
         </div>
       </td>
       <td className="grow ">${price}</td>
-      <td className="grow ">{quantity}</td>
+      <td>
+        <div className="border">
+          <button
+            type="button"
+            title="Decrese"
+            className="p-4"
+            onClick={() => {
+              alterProduct(id, -1);
+            }}
+          >
+            -
+          </button>
+          {quantity}
+          <button
+            type="button"
+            title="Increase"
+            className="p-4"
+            onClick={() => {
+              alterProduct(id, 1);
+            }}
+          >
+            +
+          </button>
+        </div>
+      </td>
       <td className="grow text-center">{formattedPrice}</td>
     </tr>
   );
