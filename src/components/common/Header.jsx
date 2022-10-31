@@ -58,9 +58,9 @@ export const Header = () => {
       </section>
 
       <nav
-        className={`absolute left-0 -top-full   transition-transform transform-gpu ${
-          menuOpen ? "translate-y-full" : ""
-        }  h-screen w-screen  lg:w-screen-1/3 text-white bg-neutral-900 `}
+        className={`absolute z-[1] left-0 -top-full   transition-transform transform-gpu ${
+          menuOpen ? "translate-y-full z-[1]" : ""
+        }  h-screen w-screen  lg:w-screen-1/3 text-white bg-neutral-900 z-[1]`}
       >
         <ul className="flex justify-center items-center flex-col h-full text-3xl gap-6 uppercase font-bold">
           <li>

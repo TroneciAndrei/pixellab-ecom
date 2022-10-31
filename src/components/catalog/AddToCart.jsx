@@ -4,7 +4,6 @@ import { AppContext } from "../../pages/_app";
 
 export const AddToCart = ({ product }) => {
   const { cart, addProduct } = useContext(AppContext);
-
   if (cart === null) {
     return;
   }
@@ -13,7 +12,6 @@ export const AddToCart = ({ product }) => {
   const { id: productId, title } = product;
 
   const newCart = {};
-
   const onClick = () => {
     fetch(`${baseUrl}/carts/${cartId}`, {
       method: "PUT",
@@ -38,7 +36,7 @@ export const AddToCart = ({ product }) => {
         type="button"
         onClick={onClick}
       >
-        Add to Cart
+        {product !== undefined ? "Add to Cart" : "Remove"}
       </button>
     </div>
   );

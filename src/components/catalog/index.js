@@ -5,3 +5,4 @@ export * from "./ProductTile";
 export * from "./RelatedProducts";
 export * from "./InfinitePagination";
 export * from "./AddToCart";
+export * from "./RemoveFromCart";

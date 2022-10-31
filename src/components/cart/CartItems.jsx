@@ -3,7 +3,7 @@ import { AppContext } from "../../pages/_app";
 import { CartLineItem } from "./CartLineItem";
 
 export const CartItems = () => {
-  const { cart } = useContext(AppContext);
+  const { cart, setCart } = useContext(AppContext);
 
   if (cart === null) {
     return <></>;
@@ -28,7 +28,13 @@ export const CartItems = () => {
 
       <tbody className="w-full flex flex-col gap-5 items-center justify-center">
         {products.map((product) => {
-          return <CartLineItem product={product} key={product.productId} />;
+          return (
+            <CartLineItem
+              setCart={setCart}
+              product={product}
+              key={product.productId}
+            />
+          );
         })}
       </tbody>
     </table>

@@ -35,6 +35,7 @@ export const Layout = ({ children }) => {
       left: 0;
       width: 80px;
       height: 100vh;
+      z-index: 1;
     }
   `;
 

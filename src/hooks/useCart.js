@@ -11,6 +11,8 @@ export const useCart = (cartId = 2) => {
       return product.productId === productId;
     });
 
+    console.log(product);
+
     if (product === undefined) {
       products.push({
         productId,
@@ -18,6 +20,14 @@ export const useCart = (cartId = 2) => {
       });
     } else {
       product.quantity += 1;
+    }
+
+    if (product.productId === productId) {
+      // products.pop({
+      //   productId,
+      //   quantity: 1,
+      // });
+      product.quantity -= 1;
     }
 
     return cart;

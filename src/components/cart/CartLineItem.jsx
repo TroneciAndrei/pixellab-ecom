@@ -1,16 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useProduct } from "../../hooks";
+import { useContext } from "react";
+import { useCart, useProduct } from "../../hooks";
 import ProductReviews from "../../pages/products/ProductReviews";
+import { AppContext } from "../../pages/_app";
+import { RemoveFromCart } from "../catalog";
 
 export const CartLineItem = ({ product }) => {
   const { quantity, productId } = product;
   const { product: cartItem } = useProduct(productId);
+  const { cart, setCart } = useContext(AppContext);
+
   const isLoaded = cartItem !== null;
 
   if (!isLoaded) {
     return <></>;
   }
+
+  const removeItem = (cart, productId) => {
+    const { products } = cart;
+    const newCart = products.filter(
+      (product) => product.productId !== productId
+    );
+
+    setCart(newCart);
+
+    // const product = products.find((product) => {
+    //   return product.productId === productId;
+    // });
+
+    // console.log(product.remove());
+  };
 
   const { image, price, id, title, rating } = cartItem;
   const formattedPrice = new Intl.NumberFormat("en-US", {
@@ -20,6 +40,14 @@ export const CartLineItem = ({ product }) => {
 
   return (
     <tr className="flex justify-between  items-center w-full border p-2">
+      {/* <RemoveFromCart products={products} setCart={setCart}/> */}
+      <button
+        type="button"
+        title="Remove item"
+        onClick={() => removeItem(cart, id)}
+      >
+        X
+      </button>
       <td className="flex gap-5 items-center ">
         <Link href={`/products/${id}`}>
           <a title={title}>
