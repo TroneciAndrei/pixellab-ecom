@@ -5,34 +5,18 @@ import { useProduct } from "../../hooks";
 import ProductReviews from "../../pages/products/ProductReviews";
 import { AppContext } from "../../pages/_app";
 
-export const CartLineItem = ({ product, cart, setCart }) => {
+export const CartLineItem = ({ product }) => {
   const { quantity, productId } = product;
   const { product: cartItem } = useProduct(productId);
-  const { alterProduct, removeProduct } = useContext(AppContext);
-
   const isLoaded = cartItem !== null;
+  const { alterProduct } = useContext(AppContext);
 
   if (!isLoaded) {
     return <></>;
   }
 
-  const removeItem = (cart) => {
-    // const { products } = cart;
-
-    // const newCart = products
-    //   .map((product) => {
-    //     return product;
-    //   })
-    //   .filter((item) => {
-    //     return item.productId !== cart.id;
-    //   });
-    cart.products = cart.products.filter((product) => {
-      return product.productId !== productId;
-    });
-    setCart(cart.products);
-  };
-
   const { image, price, id, title, rating } = cartItem;
+
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -40,16 +24,24 @@ export const CartLineItem = ({ product, cart, setCart }) => {
 
   return (
     <tr className="flex justify-between  items-center w-full border p-2">
+      <td>
+        <button
+          type="button"
+          title="Remove from cart"
+          className="p-2 bg-zinc-300 text-white border hover:bg-zinc-600  text-sm"
+          onClick={() => {
+            const confirmDelete = window.confirm(
+              `Are you sure you wish to delete product: ${title} from cart?`
+            );
+
+            if (confirmDelete) alterProduct(id, -quantity);
+            else return;
+          }}
+        >
+          X
+        </button>
+      </td>
       <td className="flex gap-5 items-center ">
-        <div>
-          <button
-            type="button"
-            title="Remove item"
-            onClick={() => removeItem(cart)}
-          >
-            X
-          </button>
-        </div>
         <Link href={`/products/${id}`}>
           <a title={title}>
             <Image
@@ -75,7 +67,7 @@ export const CartLineItem = ({ product, cart, setCart }) => {
         <div className="border">
           <button
             type="button"
-            title="Decrese"
+            title="Decrease"
             className="p-4"
             onClick={() => {
               alterProduct(id, -1);

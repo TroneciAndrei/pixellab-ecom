@@ -12,6 +12,10 @@ import { useCart } from "../hooks";
 const Cart = () => {
   const cart = useCart(2);
 
+  if (cart === null) {
+    return <></>;
+  }
+
   return (
     <>
       <Head>

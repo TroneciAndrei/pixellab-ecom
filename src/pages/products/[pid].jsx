@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import { CartControl, ContinueShopping } from "../../components/cart";
 import ProductReviews from "./ProductReviews";
 import { BiLoaderCircle } from "react-icons/bi";
-import { AddToCart, RelatedProducts } from "../../components/catalog";
+import {
+  AddToCart,
+  RelatedProducts,
+  RemoveFromCart,
+} from "../../components/catalog";
 import { useProduct } from "../../hooks";
 import Image from "next/image";
 
@@ -69,8 +73,9 @@ const ProductPage = () => {
               </span>
             </div>
 
-            <div className="mt-12">
+            <div className="mt-12 flex items-center">
               <AddToCart product={product} />
+              <RemoveFromCart product={product}></RemoveFromCart>
             </div>
           </header>
         </section>
