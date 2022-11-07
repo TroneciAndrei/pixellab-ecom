@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../..";
+import { AddToCart } from "./AddToCart";
 
 export const RelatedProducts = ({ productCategory, productId }) => {
   const [products, setProducts] = useState(null);
@@ -61,6 +62,7 @@ export const RelatedProducts = ({ productCategory, productId }) => {
                     </a>
                   </Link>
                   <span className="font-bold text-2xl">{formattedPrice}</span>
+                  <AddToCart product={product}></AddToCart>
                 </div>
               </div>
             );

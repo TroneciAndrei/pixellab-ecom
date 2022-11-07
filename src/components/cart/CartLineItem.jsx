@@ -22,6 +22,10 @@ export const CartLineItem = ({ product }) => {
     currency: "USD",
   }).format(price * quantity);
 
+  if (quantity === 1) {
+    console.log("1");
+  }
+
   return (
     <tr className="flex justify-between  items-center w-full border p-2">
       <td>
